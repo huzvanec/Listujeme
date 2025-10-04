@@ -21,12 +21,12 @@
 
 <Tooltip>
 	<TooltipTrigger {...restProps} class={className}>
-		<Switch class="!bg-input" {checked} onCheckedChange={onChange}>
+		<Switch class="bg-input!" {checked} onCheckedChange={onChange}>
 			<SunIcon
-				class="rotate-0 scale-100 fill-current !transition-all dark:-rotate-180 dark:scale-0"
+				class="rotate-0 scale-100 fill-current transition-all! dark:-rotate-180 dark:scale-0"
 			/>
 			<MoonIcon
-				class="absolute rotate-180 scale-0 fill-current !transition-all dark:rotate-0 dark:scale-100"
+				class="absolute rotate-180 scale-0 fill-current transition-all! dark:rotate-0 dark:scale-100"
 			/>
 		</Switch>
 	</TooltipTrigger>

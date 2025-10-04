@@ -20,7 +20,7 @@
 </script>
 
 <Card {...restProps} class={cn('flex size-full flex-col gap-4 text-nowrap p-4', className)}>
-	<div class="flex aspect-[416/589] items-center justify-center">
+	<div class="flex aspect-416/589 items-center justify-center">
 		<a class="w-full" target="_blank" href="{apiLink}/view">
 			<img
 				class="w-full rounded border transition duration-300 hover:scale-[103%]"
