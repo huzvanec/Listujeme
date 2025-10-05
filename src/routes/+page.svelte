@@ -30,7 +30,7 @@
 	import { Issue } from '$lib/components/issue';
 	import { ScrollArea } from '$lib/components/ui/scroll-area';
 	import { Button } from '$lib/components/ui/button';
-	import { CalendarArrowDownIcon, CalendarArrowUpIcon } from 'lucide-svelte';
+	import { CalendarArrowDownIcon, CalendarArrowUpIcon } from '@lucide/svelte';
 	import { ModeSwitch } from '$lib/components/mode-switch/index.js';
 	import { SearchBar } from '$lib/components/search-bar';
 

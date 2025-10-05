@@ -62,7 +62,7 @@
 		FunnelIcon,
 		LoaderCircleIcon,
 		SettingsIcon
-	} from 'lucide-svelte';
+	} from '@lucide/svelte';
 	import { api } from '$lib/utils.js';
 	import { Button } from '$lib/components/ui/button';
 	import { ModeSwitch } from '$lib/components/mode-switch';

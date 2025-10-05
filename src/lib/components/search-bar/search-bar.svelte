@@ -11,7 +11,7 @@
 	import { Input } from '$lib/components/ui/input';
 	import { goto } from '$app/navigation';
 	import { Button } from '$lib/components/ui/button';
-	import { TextSearchIcon } from 'lucide-svelte';
+	import { TextSearchIcon } from '@lucide/svelte';
 
 	let { class: className, value = $bindable(), ...restProps }: SearchBarProps = $props();
 

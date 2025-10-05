@@ -8,7 +8,7 @@
 </script>
 
 <script lang="ts">
-	import { DownloadIcon } from 'lucide-svelte';
+	import { DownloadIcon } from '@lucide/svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { Card } from '$lib/components/ui/card';
 	import { api, cn, translatePeriod } from '$lib/utils';

@@ -16,7 +16,7 @@
 </script>
 
 <script lang="ts">
-	import { CheckIcon, CopyCheckIcon, CopyXIcon } from 'lucide-svelte';
+	import { CheckIcon, CopyCheckIcon, CopyXIcon } from '@lucide/svelte';
 	import { Button } from '$lib/components/ui/button';
 	import {
 		Dialog,

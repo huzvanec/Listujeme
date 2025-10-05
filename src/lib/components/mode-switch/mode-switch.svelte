@@ -6,11 +6,11 @@
 
 <script lang="ts">
 	import { Switch } from '$lib/components/ui/switch';
-	import { MoonIcon, SunIcon } from 'lucide-svelte';
+	import { MoonIcon, SunIcon } from '@lucide/svelte';
 	import { mode, setMode } from 'mode-watcher';
 	import { Tooltip, TooltipContent, TooltipTrigger } from '$lib/components/ui/tooltip';
 
-	let checked = $derived<boolean>($mode === 'light');
+	let checked = $derived<boolean>(mode.current === 'light');
 
 	const onChange = (newChecked: boolean) => {
 		setMode(newChecked ? 'light' : 'dark');
@@ -31,6 +31,6 @@
 		</Switch>
 	</TooltipTrigger>
 	<TooltipContent>
-		Přepnout na {$mode === 'dark' ? 'světlý' : 'tmavý'} režim
+		Přepnout na {mode.current === 'dark' ? 'světlý' : 'tmavý'} režim
 	</TooltipContent>
 </Tooltip>
