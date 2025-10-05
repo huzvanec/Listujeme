@@ -236,10 +236,10 @@
 
 <div class="flex h-full flex-col gap-4 p-4 pr-0">
 	<div class="mr-4 flex flex-col gap-4">
-		<div class="flex items-center gap-4">
+		<div class="flex items-start gap-4">
 			<Tooltip>
 				<TooltipTrigger>
-					<Button variant="ghost" href="/" class="w-min">
+					<Button variant="outline" href="/" class="w-min">
 						<ChevronLeftIcon />
 						Zpět
 					</Button>

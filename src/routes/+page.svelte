@@ -38,6 +38,8 @@
 	import { SearchBar } from '$lib/components/search-bar';
 	import { ToggleGroup, ToggleGroupItem } from '$lib/components/ui/toggle-group';
 	import { Separator } from '$lib/components/ui/separator';
+	import { cn } from '$lib/utils';
+	import { TooltipTrigger, Tooltip, TooltipContent } from '$lib/components/ui/tooltip';
 
 	const { data } = $props();
 
@@ -83,12 +85,26 @@
 					{/if}
 				</Button>
 				<ToggleGroup type="single" class="outline-1" bind:value={viewModeUnsafe}>
-					<ToggleGroupItem value="grid" aria-label="Toggle grid view">
-						<Grid2x2Icon />
-					</ToggleGroupItem>
-					<ToggleGroupItem value="list" aria-label="Toggle list view">
-						<ListIcon />
-					</ToggleGroupItem>
+					<Tooltip>
+						<TooltipTrigger>
+							<ToggleGroupItem class="!rounded-l-sm" value="grid" aria-label="Přepnout na mřížkové zobrazení">
+								<Grid2x2Icon />
+							</ToggleGroupItem>
+						</TooltipTrigger>
+						<TooltipContent>
+							Přepnout na mřížkové zobrazení
+						</TooltipContent>
+					</Tooltip>
+					<Tooltip>
+						<TooltipTrigger>
+							<ToggleGroupItem class="!rounded-r-sm" value="list" aria-label="Přepnout na seznamové zobrazení">
+								<ListIcon />
+							</ToggleGroupItem>
+						</TooltipTrigger>
+						<TooltipContent>
+							Přepnout na seznamové zobrazení
+						</TooltipContent>
+					</Tooltip>
 				</ToggleGroup>
 			</div>
 			<Separator orientation="vertical" class="max-sm:hidden" />
@@ -100,9 +116,12 @@
 			<h2 class="sticky top-0 z-10 rounded bg-secondary px-8 py-2 text-xl font-bold">
 				{group[0].year}
 			</h2>
-			<div class="flex md:flex-row flex-col-reverse items-center md:flex-wrap gap-4 p-4 max-md:justify-center">
+			<div class={cn(
+				'flex items-center max-md:justify-center gap-4 p-4 w-full',
+				viewMode === 'grid' ? 'md:flex-row flex-col-reverse md:flex-wrap' : 'flex-col'
+			)}>
 				{#each group as issue (issue.name)}
-					<Issue class="w-[290px]" info={issue} />
+					<Issue class={cn(viewMode === 'grid' && 'w-[290px]')} info={issue} mode={viewMode} />
 				{/each}
 			</div>
 		{/each}

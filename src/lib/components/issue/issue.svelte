@@ -1,9 +1,11 @@
 <script lang="ts" module>
 	import type { IssueInfo } from '$types/newspaper';
 	import type { HTMLAttributes } from 'svelte/elements';
+	import type { ViewMode } from '../../../routes/+page.svelte';
 
 	export interface IssueProps extends HTMLAttributes<HTMLDivElement> {
 		info: IssueInfo;
+		mode: ViewMode;
 	}
 </script>
 
@@ -14,16 +16,37 @@
 	import { api, cn, translatePeriod } from '$lib/utils';
 	import { Tooltip, TooltipContent, TooltipTrigger } from '$lib/components/ui/tooltip';
 
-	const { info, class: className, ...restProps }: IssueProps = $props();
+	const { info, mode, class: className, ...restProps }: IssueProps = $props();
 
 	const apiLink = $derived<string>(`${api}/issues/${info.name}`);
 </script>
 
-<Card {...restProps} class={cn('flex size-full flex-col gap-4 text-nowrap p-4', className)}>
-	<div class="flex aspect-416/589 items-center justify-center">
+{#snippet download()}
+	<Tooltip>
+		<TooltipTrigger class="z-50">
+			<Button size="icon" variant="ghost" href="{apiLink}/download" target="_blank">
+				<DownloadIcon />
+			</Button>
+		</TooltipTrigger>
+		<TooltipContent side="bottom">Stáhnout PDF</TooltipContent>
+	</Tooltip>
+{/snippet}
+
+<Card {...restProps} class={cn(
+	'relative flex size-full gap-4 text-nowrap p-4',
+	 mode === 'grid' ? 'flex-col' : 'flex-row h-20',
+	 className
+	 )}>
+	{#if mode === 'list'}
+		<a class="absolute left-0 top-0 size-full" target="_blank" href="{apiLink}/view" aria-label="Prohlédnout PDF"></a>
+	{/if}
+	<div class="h-full flex aspect-416/589 items-center justify-center">
 		<a class="w-full" target="_blank" href="{apiLink}/view">
 			<img
-				class="w-full rounded border transition duration-300 hover:scale-[103%]"
+				class={cn(
+					"w-full rounded border transition duration-300",
+					mode === 'grid' && 'hover:scale-[103%]'
+				)}
 				fetchpriority="high"
 				src="{apiLink}/preview"
 				alt={info.name}
@@ -31,22 +54,26 @@
 		</a>
 	</div>
 	<div class="flex w-full items-center gap-2">
-		<div class="flex flex-1 flex-col">
+		<div class={cn(
+			"flex flex-1",
+			mode === 'grid' ? 'flex-col' : 'flex-row items-center'
+		)}>
 			<p class="text-lg font-bold">{info.year} {translatePeriod(info.period)}</p>
 			<Tooltip>
-				<TooltipTrigger class="w-min cursor-text select-text text-left">
+				<TooltipTrigger class={cn(
+					'w-min cursor-text select-text text-left z-50',
+					mode === 'list' && 'absolute left-1/2'
+				)}>
 					{info.typesetter ?? 'neznámý sazeč'}
 				</TooltipTrigger>
 				<TooltipContent side="bottom">Sazeč čísla</TooltipContent>
 			</Tooltip>
 		</div>
-		<Tooltip>
-			<TooltipTrigger>
-				<Button size="icon" variant="ghost" href="{apiLink}/download" target="_blank">
-					<DownloadIcon />
-				</Button>
-			</TooltipTrigger>
-			<TooltipContent side="bottom">Stáhnout PDF</TooltipContent>
-		</Tooltip>
+		{#if mode === 'grid'}
+			{@render download()}
+		{/if}
 	</div>
+	{#if mode === 'list'}
+		{@render download()}
+	{/if}
 </Card>
