@@ -59,8 +59,8 @@
 		CalendarArrowUpIcon,
 		ChevronLeftIcon,
 		ChevronRightIcon,
-		FilterIcon,
-		Loader2Icon,
+		FunnelIcon,
+		LoaderCircleIcon,
 		SettingsIcon
 	} from 'lucide-svelte';
 	import { api } from '$lib/utils.js';
@@ -227,7 +227,7 @@
 		!searching && 'pointer-events-none opacity-0'
 	)}
 >
-	<Loader2Icon class="size-80 animate-spin stroke-[0.5px]" />
+	<LoaderCircleIcon class="size-80 animate-spin stroke-[0.5px]" />
 	<div class="absolute flex flex-col items-center justify-center gap-4 text-xl">
 		<span class="font-bold">Hledám</span>
 		<Counter value={found} />
@@ -240,7 +240,8 @@
 			<Tooltip>
 				<TooltipTrigger>
 					<Button variant="ghost" href="/" class="w-min">
-						<ChevronLeftIcon /> Zpět
+						<ChevronLeftIcon />
+						Zpět
 					</Button>
 				</TooltipTrigger>
 				<TooltipContent>Zpět na rozcestník</TooltipContent>
@@ -256,14 +257,16 @@
 				onclick={nextSorting}
 			>
 				{#if sorting === 'descending'}
-					<CalendarArrowDownIcon /> Od nejnovějšího
+					<CalendarArrowDownIcon />
+					Od nejnovějšího
 				{:else}
-					<CalendarArrowUpIcon /> Od nejstaršího
+					<CalendarArrowUpIcon />
+					Od nejstaršího
 				{/if}
 			</Button>
 			<IssueFilter tabindex={-1} {issues} bind:filter>
 				<Button variant="outline">
-					<FilterIcon />
+					<FunnelIcon />
 					<span class="max-sm:hidden">Filtrování</span>
 				</Button>
 			</IssueFilter>
@@ -280,7 +283,7 @@
 		{declenseSearchedIssues(filter.issues.length)}
 	</p>
 	{#if results.length}
-		<ScrollArea type="always" class="w-full" bind:viewportRef={scrollArea}>
+		<ScrollArea type="always" class="overflow-hidden w-full" bind:viewportRef={scrollArea}>
 			<div class="flex w-full flex-col gap-4 pr-4">
 				{#each results.slice(pageStart, pageEnd) as result, index (index)}
 					{@const isNewGroup = results[pageStart + index - 1]?.issue.name !== result.issue.name}

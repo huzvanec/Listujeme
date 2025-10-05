@@ -48,7 +48,7 @@
 	);
 	let searchAll = $state<boolean>(true);
 
-	const allIndividual = <T = boolean,>(value: T): Record<string, T> => {
+	const allIndividual = <T = boolean, >(value: T): Record<string, T> => {
 		return issues.reduce(
 			(acc, issue) => {
 				acc[issue.name] = value;
@@ -159,16 +159,18 @@
 						</p>
 					{/if}
 				</TabsContent>
-				<TabsContent value="individual" class="h-[40svh] flex-col gap-4 data-[state=active]:flex">
+				<TabsContent value="individual" class="flex-col gap-4 data-[state=active]:flex">
 					<div class="flex items-center justify-between">
 						<Button variant="outline" onclick={() => (individual = allIndividual(true))}>
-							<CopyCheckIcon /> Označit vše
+							<CopyCheckIcon />
+							Označit vše
 						</Button>
 						<Button variant="outline" onclick={() => (individual = allIndividual(false))}>
-							<CopyXIcon /> Zrušit výběr
+							<CopyXIcon />
+							Zrušit výběr
 						</Button>
 					</div>
-					<ScrollArea type="always" class="pr-4">
+					<ScrollArea type="always" class="h-[40svh] pr-4">
 						<div class="flex flex-col gap-2">
 							{#each issues as issue, index (issue.name)}
 								{#if issues[index - 1]?.year !== issue.year}
@@ -195,7 +197,8 @@
 		<DialogFooter>
 			<DialogClose tabindex={-1}>
 				<Button>
-					<CheckIcon /> Hotovo
+					<CheckIcon />
+					Hotovo
 				</Button>
 			</DialogClose>
 		</DialogFooter>
