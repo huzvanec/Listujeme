@@ -1,7 +1,8 @@
 <script lang="ts" module>
 	import type { TooltipTriggerProps } from 'bits-ui';
 
-	export interface ModeSwitchProps extends TooltipTriggerProps {}
+	export interface ModeSwitchProps extends TooltipTriggerProps {
+	}
 </script>
 
 <script lang="ts">

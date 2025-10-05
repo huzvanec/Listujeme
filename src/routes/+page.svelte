@@ -24,15 +24,20 @@
 
 		return reversed ? grouped.reverse() : grouped;
 	};
+
+	export type ViewMode = 'grid' | 'list';
+	const defaultViewMode: ViewMode = 'grid';
 </script>
 
 <script lang="ts">
 	import { Issue } from '$lib/components/issue';
 	import { ScrollArea } from '$lib/components/ui/scroll-area';
 	import { Button } from '$lib/components/ui/button';
-	import { CalendarArrowDownIcon, CalendarArrowUpIcon } from '@lucide/svelte';
+	import { CalendarArrowDownIcon, CalendarArrowUpIcon, Grid2x2Icon, ListIcon } from '@lucide/svelte';
 	import { ModeSwitch } from '$lib/components/mode-switch/index.js';
 	import { SearchBar } from '$lib/components/search-bar';
+	import { ToggleGroup, ToggleGroupItem } from '$lib/components/ui/toggle-group';
+	import { Separator } from '$lib/components/ui/separator';
 
 	const { data } = $props();
 
@@ -43,6 +48,17 @@
 	const nextSorting = () => {
 		sorting = sorting === 'descending' ? 'ascending' : 'descending';
 	};
+
+	let viewModeUnsafe = $state<ViewMode | undefined>(defaultViewMode);
+	let viewMode = $state<ViewMode>(defaultViewMode);
+
+	$effect(() => {
+		if (!viewModeUnsafe) {
+			viewModeUnsafe = viewMode;
+			return;
+		}
+		viewMode = viewModeUnsafe;
+	});
 </script>
 
 <svelte:head>
@@ -52,17 +68,30 @@
 <div class="flex h-full flex-col gap-4 overflow-hidden p-4 pr-0">
 	<div class="mr-4 flex flex-col gap-4">
 		<div class="flex items-center">
-			<h1 class="text-2xl font-bold">Florián: Zpravodaj městyse Lázně Toušeň</h1>
+			<h1 class="sm:text-2xl font-bold text-base">Florián: Zpravodaj městyse Lázně Toušeň</h1>
 			<ModeSwitch class="ml-auto" />
 		</div>
 		<div class="flex gap-4 max-sm:flex-col-reverse">
-			<Button variant="outline" class="flex min-w-40 justify-start text-left" onclick={nextSorting}>
-				{#if sorting === 'descending'}
-					<CalendarArrowDownIcon /> Od nejnovějšího
-				{:else}
-					<CalendarArrowUpIcon /> Od nejstaršího
-				{/if}
-			</Button>
+			<div class="flex flex-row gap-4 justify-between">
+				<Button variant="outline" class="flex min-w-40 justify-start text-left" onclick={nextSorting}>
+					{#if sorting === 'descending'}
+						<CalendarArrowDownIcon />
+						Od nejnovějšího
+					{:else}
+						<CalendarArrowUpIcon />
+						Od nejstaršího
+					{/if}
+				</Button>
+				<ToggleGroup type="single" class="outline-1" bind:value={viewModeUnsafe}>
+					<ToggleGroupItem value="grid" aria-label="Toggle grid view">
+						<Grid2x2Icon />
+					</ToggleGroupItem>
+					<ToggleGroupItem value="list" aria-label="Toggle list view">
+						<ListIcon />
+					</ToggleGroupItem>
+				</ToggleGroup>
+			</div>
+			<Separator orientation="vertical" class="max-sm:hidden" />
 			<SearchBar class="flex-1" />
 		</div>
 	</div>
@@ -71,7 +100,7 @@
 			<h2 class="sticky top-0 z-10 rounded bg-secondary px-8 py-2 text-xl font-bold">
 				{group[0].year}
 			</h2>
-			<div class="flex flex-wrap gap-4 p-4 max-md:justify-center">
+			<div class="flex md:flex-row flex-col-reverse items-center md:flex-wrap gap-4 p-4 max-md:justify-center">
 				{#each group as issue (issue.name)}
 					<Issue class="w-[290px]" info={issue} />
 				{/each}
