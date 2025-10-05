@@ -1,13 +1,21 @@
-<script lang="ts">
-	import { Switch as SwitchPrimitive } from "bits-ui";
-	import { cn, type WithoutChildrenOrChild } from "$lib/utils.js";
+<script lang="ts" module>
+	import { Switch as SwitchPrimitive } from 'bits-ui';
+	import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
+	import type { Snippet } from 'svelte';
 
+	export interface SwitchProps extends WithoutChildrenOrChild<SwitchPrimitive.RootProps> {
+		children?: Snippet;
+	}
+</script>
+
+<script lang="ts">
 	let {
 		ref = $bindable(null),
 		class: className,
 		checked = $bindable(false),
+		children,
 		...restProps
-	}: WithoutChildrenOrChild<SwitchPrimitive.RootProps> = $props();
+	}: SwitchProps = $props();
 </script>
 
 <SwitchPrimitive.Root
@@ -25,5 +33,7 @@
 		class={cn(
 			"bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-4 rounded-full ring-0 transition-transform data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0"
 		)}
-	/>
+	>
+		{@render children?.()}
+	</SwitchPrimitive.Thumb>
 </SwitchPrimitive.Root>
