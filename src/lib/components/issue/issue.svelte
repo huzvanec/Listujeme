@@ -23,7 +23,7 @@
 
 {#snippet download()}
 	<Tooltip>
-		<TooltipTrigger class="z-50">
+		<TooltipTrigger class="z-20">
 			<Button size="icon" variant="ghost" href="{apiLink}/download" target="_blank">
 				<DownloadIcon />
 			</Button>
@@ -61,7 +61,7 @@
 			<p class="text-lg font-bold">{info.year} {translatePeriod(info.period)}</p>
 			<Tooltip>
 				<TooltipTrigger class={cn(
-					'w-min cursor-text select-text text-left z-50',
+					'w-min cursor-text select-text text-left z-20',
 					mode === 'list' && 'absolute left-1/2'
 				)}>
 					{info.typesetter ?? 'neznámý sazeč'}
