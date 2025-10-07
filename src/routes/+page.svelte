@@ -67,7 +67,7 @@
 	<title>Listujeme Floriány</title>
 </svelte:head>
 
-<div class="flex h-full flex-col gap-4 overflow-hidden p-4 pr-0">
+<div class="flex h-full flex-col gap-4 p-4 pr-0">
 	<div class="mr-4 flex flex-col gap-4">
 		<div class="flex items-center">
 			<h1 class="sm:text-2xl font-bold text-base">Florián: Zpravodaj městyse Lázně Toušeň</h1>
@@ -113,7 +113,7 @@
 			<SearchBar class="flex-1" />
 		</div>
 	</div>
-	<ScrollArea class="size-full pr-4" type="always">
+	<ScrollArea class="size-full pr-4 overflow-hidden" type="always">
 		{#each groups as group (group[0].year)}
 			<h2 class="sticky top-0 z-50 rounded bg-secondary px-8 py-2 text-xl font-bold">
 				{group[0].year}
@@ -123,7 +123,7 @@
 				viewMode === 'grid' ? 'md:flex-row flex-col-reverse md:flex-wrap' : 'flex-col'
 			)}>
 				{#each group as issue (issue.name)}
-					<Issue class={cn(viewMode === 'grid' && 'w-[290px]')} info={issue} mode={viewMode} />
+					<Issue class={cn(viewMode === 'grid' && 'sm:w-[290px] w-[240px]')} info={issue} mode={viewMode} />
 				{/each}
 			</div>
 		{/each}
