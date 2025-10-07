@@ -55,14 +55,14 @@
 	</div>
 	<div class="flex w-full items-center gap-2">
 		<div class={cn(
-			"flex flex-1",
-			mode === 'grid' ? 'flex-col' : 'flex-row items-center'
+			"flex flex-1 flex-col",
+			mode === 'list' && 'sm:flex-row sm:items-center'
 		)}>
 			<p class="text-lg font-bold">{info.year} {translatePeriod(info.period)}</p>
 			<Tooltip>
 				<TooltipTrigger class={cn(
 					'w-min cursor-text select-text text-left z-20',
-					mode === 'list' && 'absolute left-1/2'
+					mode === 'list' && 'sm:absolute sm:left-1/2'
 				)}>
 					{info.typesetter ?? 'neznámý sazeč'}
 				</TooltipTrigger>
