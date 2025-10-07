@@ -87,7 +87,7 @@
 				<ToggleGroup type="single" class="outline-1" bind:value={viewModeUnsafe}>
 					<Tooltip>
 						<TooltipTrigger>
-							<ToggleGroupItem class="!rounded-l-sm" value="grid" aria-label="Přepnout na mřížkové zobrazení">
+							<ToggleGroupItem class="!rounded-l-sm !rounded-r-none" value="grid" aria-label="Přepnout na mřížkové zobrazení">
 								<Grid2x2Icon />
 							</ToggleGroupItem>
 						</TooltipTrigger>
@@ -97,7 +97,7 @@
 					</Tooltip>
 					<Tooltip>
 						<TooltipTrigger>
-							<ToggleGroupItem class="!rounded-r-sm" value="list" aria-label="Přepnout na seznamové zobrazení">
+							<ToggleGroupItem class="!rounded-r-sm !rounded-l-none" value="list" aria-label="Přepnout na seznamové zobrazení">
 								<ListIcon />
 							</ToggleGroupItem>
 						</TooltipTrigger>
