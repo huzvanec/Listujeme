@@ -51,6 +51,7 @@
 		sorting = sorting === 'descending' ? 'ascending' : 'descending';
 	};
 
+	let scrollAreaView = $state<HTMLElement | null>(null);
 	let viewModeUnsafe = $state<ViewMode | undefined>(defaultViewMode);
 	let viewMode = $state<ViewMode>(defaultViewMode);
 
@@ -60,6 +61,7 @@
 			return;
 		}
 		viewMode = viewModeUnsafe;
+		scrollAreaView?.scrollTo({ top: 0, behavior: 'instant' });
 	});
 </script>
 
@@ -113,11 +115,11 @@
 			<SearchBar class="flex-1" />
 		</div>
 	</div>
-	<ScrollArea class="size-full pr-4 overflow-hidden" type="always">
+	<ScrollArea class="size-full pr-4 overflow-hidden" type="always" bind:viewportRef={scrollAreaView}>
 		{#each groups as group (group[0].year)}
-			<h2 class="sticky top-0 z-50 rounded bg-secondary px-8 py-2 text-xl font-bold">
-				{group[0].year}
-			</h2>
+			<div class="flex flex-row sticky top-0 z-50 rounded bg-secondary px-8 py-2 text-xl font-bold">
+				<h2>Rok {group[0].year}</h2>
+			</div>
 			<div class={cn(
 				'flex items-center max-md:justify-center gap-4 p-4 w-full',
 				viewMode === 'grid' ? 'md:flex-row flex-col-reverse md:flex-wrap' : 'flex-col'

@@ -45,7 +45,7 @@
 			<img
 				class={cn(
 					"w-full rounded border transition duration-300",
-					mode === 'grid' && 'hover:scale-[103%]'
+					mode === 'grid' && 'hover:scale-[103%] hover:translate-y-[-3px]'
 				)}
 				fetchpriority="high"
 				src="{apiLink}/preview"
