@@ -123,7 +123,7 @@
 				viewMode === 'grid' ? 'md:flex-row flex-col-reverse md:flex-wrap' : 'flex-col'
 			)}>
 				{#each group as issue (issue.name)}
-					<Issue class={cn(viewMode === 'grid' && 'sm:w-[290px] w-[240px]')} info={issue} mode={viewMode} />
+					<Issue class={cn(viewMode === 'grid' && 'sm:w-[290px] w-[260px]')} info={issue} mode={viewMode} />
 				{/each}
 			</div>
 		{/each}

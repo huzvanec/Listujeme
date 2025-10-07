@@ -58,10 +58,10 @@
 			"flex flex-1 flex-col",
 			mode === 'list' && 'sm:flex-row sm:items-center'
 		)}>
-			<p class="text-lg font-bold">{info.year} {translatePeriod(info.period)}</p>
+			<p class="sm:text-lg font-bold">{info.year} {translatePeriod(info.period)}</p>
 			<Tooltip>
 				<TooltipTrigger class={cn(
-					'w-min cursor-text select-text text-left z-20',
+					'w-min cursor-text select-text text-left z-20 sm:text-base text-sm',
 					mode === 'list' && 'sm:absolute sm:left-1/2'
 				)}>
 					{info.typesetter ?? 'neznámý sazeč'}
