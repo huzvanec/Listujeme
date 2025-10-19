@@ -33,8 +33,8 @@ importers:
         specifier: ^22.10.7
         version: 22.18.11
       bits-ui:
-        specifier: 2.13.0
-        version: 2.13.0(@internationalized/date@3.10.0)(@sveltejs/kit@2.47.1(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.41.0)(vite@7.1.10(@types/node@22.18.11)(jiti@2.6.1)(lightningcss@1.30.1)))(svelte@5.41.0)(vite@7.1.10(@types/node@22.18.11)(jiti@2.6.1)(lightningcss@1.30.1)))(svelte@5.41.0)
+        specifier: 2.14.0
+        version: 2.14.0(@internationalized/date@3.10.0)(@sveltejs/kit@2.47.1(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.41.0)(vite@7.1.10(@types/node@22.18.11)(jiti@2.6.1)(lightningcss@1.30.1)))(svelte@5.41.0)(vite@7.1.10(@types/node@22.18.11)(jiti@2.6.1)(lightningcss@1.30.1)))(svelte@5.41.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -709,8 +709,8 @@ packages:
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
-  bits-ui@2.13.0:
-    resolution: {integrity: sha512-30KLN8Swzmqu86w9fNKxkAURLyIOrAhh1HBif3Rqm2xpBKyc1+2GlLY1EwvXGie192IrE5hhH+UIeI1dMP4TNw==}
+  bits-ui@2.14.0:
+    resolution: {integrity: sha512-XKYLhsg7ThLXbhYldJHerAeAMKCoU9eSntYJIYJym9ah3rqL1cvg0yGBT/8e23I7RYsgh0F1pihaOJbuCJ0IJA==}
     engines: {node: '>=20'}
     peerDependencies:
       '@internationalized/date': ^3.8.1
@@ -2074,7 +2074,7 @@ snapshots:
 
   balanced-match@1.0.2: {}
 
-  bits-ui@2.13.0(@internationalized/date@3.10.0)(@sveltejs/kit@2.47.1(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.41.0)(vite@7.1.10(@types/node@22.18.11)(jiti@2.6.1)(lightningcss@1.30.1)))(svelte@5.41.0)(vite@7.1.10(@types/node@22.18.11)(jiti@2.6.1)(lightningcss@1.30.1)))(svelte@5.41.0):
+  bits-ui@2.14.0(@internationalized/date@3.10.0)(@sveltejs/kit@2.47.1(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.41.0)(vite@7.1.10(@types/node@22.18.11)(jiti@2.6.1)(lightningcss@1.30.1)))(svelte@5.41.0)(vite@7.1.10(@types/node@22.18.11)(jiti@2.6.1)(lightningcss@1.30.1)))(svelte@5.41.0):
     dependencies:
       '@floating-ui/core': 1.7.3
       '@floating-ui/dom': 1.7.4
