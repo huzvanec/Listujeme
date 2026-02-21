@@ -121,8 +121,8 @@
 				<h2>Rok {group[0].year}</h2>
 			</div>
 			<div class={cn(
-				'flex items-center max-md:justify-center gap-4 p-4 w-full',
-				viewMode === 'grid' ? 'md:flex-row flex-col-reverse md:flex-wrap' : 'flex-col'
+				'flex items-center gap-4 p-4 w-full flex-col-reverse',
+				viewMode === 'grid' && 'md:flex-row md:flex-wrap max-md:justify-center'
 			)}>
 				{#each group as issue (issue.name)}
 					<Issue class={cn(viewMode === 'grid' && 'sm:w-72.5 w-65')} info={issue} mode={viewMode} />
