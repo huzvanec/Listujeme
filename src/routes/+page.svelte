@@ -89,7 +89,7 @@
 				<ToggleGroup type="single" class="outline-1" bind:value={viewModeUnsafe}>
 					<Tooltip>
 						<TooltipTrigger>
-							<ToggleGroupItem class="!rounded-l-sm !rounded-r-none" value="grid"
+							<ToggleGroupItem class="rounded-l-sm! rounded-r-none!" value="grid"
 															 aria-label="Přepnout na mřížkové zobrazení">
 								<Grid2x2Icon />
 							</ToggleGroupItem>
@@ -100,7 +100,7 @@
 					</Tooltip>
 					<Tooltip>
 						<TooltipTrigger>
-							<ToggleGroupItem class="!rounded-r-sm !rounded-l-none" value="list"
+							<ToggleGroupItem class="rounded-r-sm! rounded-l-none!" value="list"
 															 aria-label="Přepnout na seznamové zobrazení">
 								<ListIcon />
 							</ToggleGroupItem>
@@ -125,7 +125,7 @@
 				viewMode === 'grid' ? 'md:flex-row flex-col-reverse md:flex-wrap' : 'flex-col'
 			)}>
 				{#each group as issue (issue.name)}
-					<Issue class={cn(viewMode === 'grid' && 'sm:w-[290px] w-[260px]')} info={issue} mode={viewMode} />
+					<Issue class={cn(viewMode === 'grid' && 'sm:w-72.5 w-65')} info={issue} mode={viewMode} />
 				{/each}
 			</div>
 		{/each}
